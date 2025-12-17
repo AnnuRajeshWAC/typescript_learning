@@ -10,7 +10,11 @@ const DynamicClock = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-  return <div className="text-[#265185] w-full text-left">{clock}</div>;
+  return (
+    <div className="text-[#265185] w-full text-left max-md:text-center">
+      {clock}
+    </div>
+  );
 };
 
 export default DynamicClock;

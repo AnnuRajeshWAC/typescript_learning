@@ -11,12 +11,12 @@ export const getLocalTime = (time: any) => {
   return new Date(time + "Z");
 };
 export const getDay = (date: any) => {
-  const t: number = date?.getDay();
+  const sample = new Date(date);
+  const t: number = sample?.getDay();
   const currentDate = new Date();
   const d = new Date(date);
-  if (d === currentDate) {
+  if (d.toDateString() === currentDate.toDateString()) {
     return "Today";
-  } else {
-    return days[t];
   }
+  return days[t];
 };

@@ -10,12 +10,24 @@ export const greetings = (hr: number) => {
   }
 };
 export const getTime = (date: any) => {
-  const hr = date.getHours();
-  const mm = date.getMinutes();
+  console.log(date, "date");
+
+  const d = new Date(date + "Z");
+  const hr = d?.getHours();
+  const mm = d?.getMinutes();
+  const formattedMinutes = String(mm).padStart(2, "0");
+
   if (hr >= 12) {
     const h: number = 24 - hr;
-    return `${h}:${mm} PM`;
+    return `${h}:${formattedMinutes} PM`;
   } else {
-    return `${hr}:${mm} AM`;
+    return `${hr}:${formattedMinutes} AM`;
   }
+};
+
+export const formatTime = (time: any) => {
+  return new Date(time).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 };
